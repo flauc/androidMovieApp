@@ -26,6 +26,7 @@ public class GridAdapter extends ArrayAdapter<MovieGridObject> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        Log.d("Log:", "Adapter got called");
         MovieGridObject movieGridObject = getItem(position);
 
         if (convertView == null) {

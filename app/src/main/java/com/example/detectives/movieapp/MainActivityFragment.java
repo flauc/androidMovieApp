@@ -40,9 +40,16 @@ import java.util.List;
 
 public class MainActivityFragment extends Fragment {
 
+    // Views
+    View rootView;
+    GridView gridView;
+
+    // The grid adapter
     private GridAdapter gridAdapter;
+
+    // The list of movie object
     ArrayList<MovieGridObject> movieGridObjects = new ArrayList<MovieGridObject>();
-    private int cPos = GridView.INVALID_POSITION;
+
 
     public MainActivityFragment() {
     }
@@ -74,17 +81,17 @@ public class MainActivityFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        // Set the root view instance
+        rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+        // Set the grid view instance
+        gridView = (GridView) rootView.findViewById(R.id.main_gridview);
+
+        // Execute the async task
         GetMovies getMovies = new GetMovies();
         getMovies.execute("popularity.desc");
 
-
-        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-
-        gridAdapter = new GridAdapter(getActivity(), movieGridObjects);
-
-        GridView gridView = (GridView) rootView.findViewById(R.id.main_gridview);
-        gridView.setAdapter(gridAdapter);
-
+        // Click listener
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int p, long l) {
@@ -95,6 +102,11 @@ public class MainActivityFragment extends Fragment {
         });
 
         return rootView;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
     }
 
     public class GetMovies extends AsyncTask<String, Void, String[]> {
@@ -190,6 +202,7 @@ public class MainActivityFragment extends Fragment {
             }
 
             try {
+                Log.d(LOG_TAG, "Parsed");
                 return parsJson(movieJson, num_res);
             } catch (JSONException e) {
                 Log.e(LOG_TAG, e.getMessage(), e);
@@ -207,12 +220,18 @@ public class MainActivityFragment extends Fragment {
                 String imgSize = "w185";
 
                 movieGridObjects.clear();
-                Log.d("PostExecute", " clearing array");
-
                 for(String a : res) {
+                    Log.d("Adding Movies", a);
                     movieGridObjects.add(new MovieGridObject(a, imgSize));
                 }
+
+                Log.d("GridObject", movieGridObjects.toString());
+
+                // Instance of the grid adapter
                 gridAdapter = new GridAdapter(getActivity(),movieGridObjects);
+
+                // Setting the grid vies adapter to be the grid adapter
+                gridView.setAdapter(gridAdapter);
             }
         }
     }

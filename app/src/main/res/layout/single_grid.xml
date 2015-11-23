@@ -3,10 +3,11 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <ImageView
+        android:contentDescription="A movie poster"
         android:layout_width="match_parent"
         android:layout_height="278dp"
         android:id="@+id/poster_image"
-        android:layout_gravity="left|center_vertical"
+        android:layout_gravity="start|center_vertical"
         android:scaleType="centerCrop"/>
 
 </FrameLayout>

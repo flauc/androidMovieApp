@@ -1,9 +1,11 @@
 package com.example.detectives.movieapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,8 +45,7 @@ public class MainActivityFragment extends Fragment {
     // Views
     View rootView;
     GridView gridView;
-
-    // The grid adapter
+   // The grid adapter
     private GridAdapter gridAdapter;
 
     // The list of movie object
@@ -87,9 +88,18 @@ public class MainActivityFragment extends Fragment {
         // Set the grid view instance
         gridView = (GridView) rootView.findViewById(R.id.main_gridview);
 
+        // Preferences
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String sortOrder = prefs.getString("pref_sortOrder", getString(R.string.pref_sort_default));
+
         // Execute the async task
         GetMovies getMovies = new GetMovies();
-        getMovies.execute("popularity.desc");
+        if(sortOrder.equals("mPopular")) {
+            getMovies.execute("popularity.desc");
+        } else {
+            getMovies.execute("vote_average.desc");
+        }
+
 
         // Click listener
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

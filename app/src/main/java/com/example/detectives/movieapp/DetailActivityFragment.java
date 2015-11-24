@@ -48,21 +48,21 @@ public class DetailActivityFragment extends Fragment {
                 float vAverage = Float.parseFloat(intent.getStringExtra("voteAverage"));
 
                 float scale = getResources().getDisplayMetrics().density;
-                int paToAdd = (int) (3*scale + 0.5f);
+//                int paToAdd = (int) (1.5*scale + 0.5f);
 
                 LinearLayout lm = (LinearLayout) rootView.findViewById(R.id.votes_wrapper);
                 int bigStars = (int)((Math.floor(vAverage/2)));
                 for(int i=0; i<bigStars;i++) {
                     ImageView a = new ImageView(getContext());
-                    a.setImageResource(R.drawable.vote_circle);
-                    a.setPadding(paToAdd,paToAdd,paToAdd,paToAdd);
+                    a.setImageResource(R.mipmap.vote_star);
+//                    a.setPadding(paToAdd,paToAdd,paToAdd,paToAdd);
                     lm.addView(a);
                 }
 
                 if(((vAverage/2) - bigStars) >= 0.5) {
                     ImageView a = new ImageView(getContext());
-                    a.setImageResource(R.drawable.vote_half_circle);
-                    a.setPadding(paToAdd,paToAdd,paToAdd,paToAdd);
+                    a.setImageResource(R.mipmap.half_vote_star);
+//                    a.setPadding(paToAdd,paToAdd,paToAdd,paToAdd);
                     lm.addView(a);
                 }
             }

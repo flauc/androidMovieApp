@@ -2,6 +2,7 @@ package com.example.detectives.movieapp;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,6 +19,8 @@ import com.squareup.picasso.Picasso;
  */
 public class DetailActivityFragment extends Fragment {
 
+    CollapsingToolbarLayout collapsingToolbarLayout;
+
     public DetailActivityFragment() {
     }
 
@@ -29,20 +32,6 @@ public class DetailActivityFragment extends Fragment {
 
         Intent intent = getActivity().getIntent();
         if (intent != null) {
-
-            if(intent.hasExtra("title")) {
-                String title = intent.getStringExtra("title");
-                getActivity().setTitle(title);
-            }
-
-            if(intent.hasExtra("gaImage") && intent.hasExtra("gaImageSize")) {
-                ImageView imgView = (ImageView) rootView.findViewById(R.id.intro_img);
-                String gaImage = intent.getStringExtra("gaImage");
-                String gaImageSize = intent.getStringExtra("gaImageSize");
-                Picasso
-                        .with(getContext())
-                        .load("http://image.tmdb.org/t/p/" + gaImageSize + gaImage).into(imgView);
-            }
 
             if (intent.hasExtra("voteAverage")) {
                 float vAverage = Float.parseFloat(intent.getStringExtra("voteAverage"));

@@ -9,6 +9,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -18,15 +23,35 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
+        // Setting the image and title here just for now
+        Intent intent = getIntent();
+        if (intent != null) {
+            if(intent.hasExtra("gaImage") && intent.hasExtra("gaImageSize")) {
+                ImageView imgView = (ImageView) findViewById(R.id.ex_img);
+                String gaImage = intent.getStringExtra("gaImage");
+                String gaImageSize = intent.getStringExtra("gaImageSize");
+                Picasso
+                        .with(this)
+                        .load("http://image.tmdb.org/t/p/" + gaImageSize + gaImage).into(imgView);
+            }
+            if(intent.hasExtra("title")) {
+                String title = intent.getStringExtra("title");
+                TextView textViewTitle = (TextView) findViewById(R.id.ex_title);
+                textViewTitle.setText(title);
+            }
+        }
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

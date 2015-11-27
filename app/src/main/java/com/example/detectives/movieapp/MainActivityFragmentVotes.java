@@ -40,7 +40,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-public class MainActivityFragment extends Fragment {
+public class MainActivityFragmentVotes extends Fragment {
 
     // Views
     View rootView;
@@ -52,11 +52,11 @@ public class MainActivityFragment extends Fragment {
     ArrayList<MovieGridObject> movieGridObjects = new ArrayList<MovieGridObject>();
 
 
-    public MainActivityFragment() {
+    public MainActivityFragmentVotes() {
     }
 
 
-    // Required so you can have options
+    // Required for options menu
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,11 +94,7 @@ public class MainActivityFragment extends Fragment {
 
         // Execute the async task
         GetMovies getMovies = new GetMovies();
-        if(sortOrder.equals("mPopular")) {
-            getMovies.execute("popularity.desc");
-        } else {
-            getMovies.execute("vote_average.desc");
-        }
+        getMovies.execute("vote_average.desc");
 
 
         // Click listener

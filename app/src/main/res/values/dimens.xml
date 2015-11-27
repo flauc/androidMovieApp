@@ -9,6 +9,6 @@
     <dimen name="tab_height">72dp</dimen>
     
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="extended_toolbar_height">128dp</dimen>
+    <dimen name="extended_toolbar_height">178dp</dimen>
 
 </resources>

@@ -4,4 +4,5 @@
     <color name="brown_700">#5d4037</color>
     <color name="brown_300">#a1887f</color>
     <color name="red_a200">#ff5252</color>
+    <color name="on_bg_text">#ffffff</color>
 </resources>

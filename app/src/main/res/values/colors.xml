@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="brown_500">#795548</color>
-    <color name="brown_700">#5d4037</color>
-    <color name="brown_300">#a1887f</color>
-    <color name="red_a200">#ff5252</color>
+    <color name="primary">#4CAF50</color>
+    <color name="primaryDark">#388E3C</color>
+    <color name="primaryLight">#C8E6C9</color>
+    <color name="accent">#ff5252</color>
     <color name="on_bg_text">#ffffff</color>
 </resources>

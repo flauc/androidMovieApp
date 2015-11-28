@@ -12,8 +12,9 @@ public class MovieGridObject {
     String gaImage;
     String gaImageSize;
     String voteAverage;
+    String movieID;
 
-    public MovieGridObject(String a, String b, String c, String d, String e, String i, String j, String k) {
+    public MovieGridObject(String a, String b, String c, String d, String e, String i, String j, String k, String l) {
         this.imageLink = a;
         this.imageSize = b;
         this.title = c;
@@ -22,5 +23,6 @@ public class MovieGridObject {
         this.gaImage = i;
         this.gaImageSize = j;
         this.voteAverage = k;
+        this.movieID = l;
     }
 }

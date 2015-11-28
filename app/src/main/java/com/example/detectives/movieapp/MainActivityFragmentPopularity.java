@@ -98,7 +98,8 @@ public class MainActivityFragmentPopularity extends Fragment {
                         .putExtra("rDate", movie.rDate)
                         .putExtra("gaImage", movie.gaImage)
                         .putExtra("gaImageSize", movie.gaImageSize)
-                        .putExtra("voteAverage", movie.voteAverage);
+                        .putExtra("voteAverage", movie.voteAverage)
+                        .putExtra("movieId", movie.movieID);
                 startActivity(intent);
             }
         });
@@ -133,8 +134,9 @@ public class MainActivityFragmentPopularity extends Fragment {
                 String path = single.getString("poster_path");
                 String path2 = single.getString("backdrop_path");
                 String voteAverage = single.getString("vote_average");
+                String movieId = single.getString("id");
 
-                res[i] = title + "<>" + overview + "<>" + release_date + "<>" + path + "<>" + path2 + "<>" + voteAverage;
+                res[i] = title + "<>" + overview + "<>" + release_date + "<>" + path + "<>" + path2 + "<>" + voteAverage + "<>" + movieId;
             }
 
             return res;
@@ -235,7 +237,7 @@ public class MainActivityFragmentPopularity extends Fragment {
                     for(int i = 0; i < current.length; i++) {
                         Log.d("Adding Movies", current[i]);
                     }
-                    movieGridObjects.add(new MovieGridObject(current[3], imgSize, current[0], current[1], current[2], current[4], gaImgSize, current[5]));
+                    movieGridObjects.add(new MovieGridObject(current[3], imgSize, current[0], current[1], current[2], current[4], gaImgSize, current[5], current[6]));
                 }
 
                 Log.d("GridObject", movieGridObjects.toString());

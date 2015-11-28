@@ -19,4 +19,7 @@
     </string-array>
     <string name="pref_sort_default" translatable="false">mPopular</string>
     <string name="title_activity_settings">Settings</string>
+
+    <string name="review_button">Reviews</string>
+    <string name="video_button">Videos</string>
 </resources>

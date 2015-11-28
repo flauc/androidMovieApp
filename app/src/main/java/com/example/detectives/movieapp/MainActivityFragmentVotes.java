@@ -2,7 +2,6 @@ package com.example.detectives.movieapp;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
@@ -16,12 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.Toast;
-
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,14 +25,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
 
 public class MainActivityFragmentVotes extends Fragment {
 
@@ -110,7 +99,8 @@ public class MainActivityFragmentVotes extends Fragment {
                         .putExtra("rDate", movie.rDate)
                         .putExtra("gaImage", movie.gaImage)
                         .putExtra("gaImageSize", movie.gaImageSize)
-                        .putExtra("voteAverage", movie.voteAverage);
+                        .putExtra("voteAverage", movie.voteAverage)
+                        .putExtra("movieID", movie.movieID);
                 startActivity(intent);
             }
         });
@@ -145,8 +135,9 @@ public class MainActivityFragmentVotes extends Fragment {
                 String path = single.getString("poster_path");
                 String path2 = single.getString("backdrop_path");
                 String voteAverage = single.getString("vote_average");
+                String movieId = single.getString("id");
 
-                res[i] = title + "<>" + overview + "<>" + release_date + "<>" + path + "<>" + path2 + "<>" + voteAverage;
+                res[i] = title + "<>" + overview + "<>" + release_date + "<>" + path + "<>" + path2 + "<>" + voteAverage + "<>" + movieId;
             }
 
             return res;
@@ -247,7 +238,7 @@ public class MainActivityFragmentVotes extends Fragment {
                     for(int i = 0; i < current.length; i++) {
                         Log.d("Adding Movies", current[i]);
                     }
-                    movieGridObjects.add(new MovieGridObject(current[3], imgSize, current[0], current[1], current[2], current[4], gaImgSize, current[5]));
+                    movieGridObjects.add(new MovieGridObject(current[3], imgSize, current[0], current[1], current[2], current[4], gaImgSize, current[5], current[6]));
                 }
 
                 Log.d("GridObject", movieGridObjects.toString());

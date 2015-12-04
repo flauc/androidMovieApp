@@ -228,7 +228,7 @@ public class MainActivityFragmentPopularity extends Fragment {
         protected void onPostExecute(String[] res) {
             if (res != null) {
                 String imgSize = "w185";
-                String gaImgSize = "w342";
+                String gaImgSize = "w500";
 
                 movieGridObjects.clear();
                 String[] current;

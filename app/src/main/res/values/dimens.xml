@@ -7,8 +7,11 @@
     <dimen name="tab_padding_bottom">16dp</dimen>
     <dimen name="tab_label">14sp</dimen>
     <dimen name="tab_height">72dp</dimen>
+
+    <dimen name="grid_height">278dp</dimen>
     
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="extended_toolbar_height">178dp</dimen>
 
+    <dimen name="text_area_elevation">2dp</dimen>
 </resources>

@@ -5,7 +5,7 @@
     <ImageView
         android:contentDescription="A movie poster"
         android:layout_width="match_parent"
-        android:layout_height="278dp"
+        android:layout_height="@dimen/grid_height"
         android:id="@+id/poster_image"
         android:layout_gravity="start|center_vertical"
         android:scaleType="centerCrop"/>

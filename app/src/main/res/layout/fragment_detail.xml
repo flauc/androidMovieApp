@@ -9,78 +9,87 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="36dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="52dp"
+        android:layout_margin="8dp"
+        android:background="@color/text_block_bg"
         android:orientation="horizontal"
         android:gravity="center"
-        android:id="@+id/votes_wrapper"/>
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="@string/de_overview"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:paddingTop="8dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp" />
-
-    <TextView
-        android:paddingTop="8dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingBottom="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/movie_overview" />
-
-    <View
-        style="@style/HorizontalLine" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/de_release"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:paddingTop="16dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp" />
-
-    <TextView
-        android:paddingTop="8dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingBottom="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/movie_rel" />
+        android:padding="8dp"
+        android:id="@+id/votes_wrapper"
+        android:elevation="@dimen/text_area_elevation" />
 
     <LinearLayout
-        style="?android:attr/buttonBarStyle"
+        style="@style/textBlock"
+        android:orientation="vertical"
+        android:elevation="@dimen/text_area_elevation">
+
+        <TextView
+            style="@style/DetailsTextTitle"
+            android:text="@string/de_overview"/>
+
+        <TextView
+            style="@style/DetailsText"
+            android:id="@+id/movie_overview" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/textBlock"
+        android:orientation="vertical"
+        android:elevation="@dimen/text_area_elevation">
+
+        <TextView
+            style="@style/DetailsTextTitle"
+            android:text="@string/de_release" />
+
+        <TextView
+            style="@style/DetailsText"
+            android:id="@+id/movie_rel" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center">
+        android:layout_height="wrap_content">
 
         <Button
-            style="?android:attr/buttonBarButtonStyle"
+            style="@style/button"
+            android:layout_weight="0.5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawableTop="@drawable/ic_video"
             android:text="@string/video_button"
             android:id="@+id/show_videos_button"
-            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
+            android:padding="16dp"
+            android:textAllCaps="false"
+            android:elevation="2dp"
             android:clickable="true"
             android:enabled="true" />
 
         <Button
-            style="?android:attr/buttonBarButtonStyle"
+            style="@style/button"
+            android:layout_weight="0.5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/review_button"
             android:id="@+id/show_reviews_button"
-            android:layout_gravity="center"
+            android:drawableTop="@drawable/ic_reviews"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:padding="16dp"
+            android:textAllCaps="false"
+            android:elevation="2dp"
             android:clickable="true"
             android:enabled="true" />
 

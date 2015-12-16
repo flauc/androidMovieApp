@@ -19,9 +19,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.detectives.movieapp.data.MovieContract.MostPopular;
-import com.example.detectives.movieapp.data.MovieContract.HighestRated;
-import com.example.detectives.movieapp.data.MovieContract.Favorite;
+import com.example.detectives.movieapp.data.MovieContract.MovieTable;
 
 public class MovieDbHelper extends SQLiteOpenHelper {
 
@@ -35,40 +33,18 @@ public class MovieDbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-        final String SQL_CREATE_MOST_POPULAR_TABLE = "CREATE TABLE " + MostPopular.TABLE_NAME + " (" +
-                MostPopular._ID + " INTEGER PRIMARY KEY, " +
-                MostPopular.COLUMN_MOVIE_ID + " INTEGER NOT NULL, " +
-                MostPopular.COLUMN_TITLE + " TEXT NOT NULL, " +
-                MostPopular.COLUMN_OVERVIEW + " TEXT, " +
-                MostPopular.COLUMN_VOTE_AVERAGE + " REAL, " +
-                MostPopular.COLUMN_POSTER + " BLOB, " +
-                MostPopular.COLUMN_BACKDROOP + " BLOB, " +
-                " );";
+        final String SQL_CREATE_MOVIE_TABLE = "CREATE TABLE " + MovieTable.TABLE_NAME + " (" +
+                MovieTable._ID + " INTEGER PRIMARY KEY, " +
+                MovieTable.COLUMN_IDENTIFIER + " TEXT NOT NULL, " +
+                MovieTable.COLUMN_MOVIE_ID + " INTEGER NOT NULL, " +
+                MovieTable.COLUMN_TITLE + " TEXT NOT NULL, " +
+                MovieTable.COLUMN_OVERVIEW + " TEXT, " +
+                MovieTable.COLUMN_VOTE_AVERAGE + " REAL, " +
+                MovieTable.COLUMN_POSTER + " BLOB, " +
+                MovieTable.COLUMN_BACKDROOP + " BLOB, " +
+                "CHECK (" + MovieTable.COLUMN_IDENTIFIER + " IN ('Most Popular', 'Highest Rated', 'Favorite'))" + ");";
 
-        final String SQL_CREATE_HIGHEST_RATED_TABLE = "CREATE TABLE " + HighestRated.TABLE_NAME + " (" +
-                HighestRated._ID + " INTEGER PRIMARY KEY, " +
-                HighestRated.COLUMN_MOVIE_ID + " INTEGER NOT NULL, " +
-                HighestRated.COLUMN_TITLE + " TEXT NOT NULL, " +
-                HighestRated.COLUMN_OVERVIEW + " TEXT, " +
-                HighestRated.COLUMN_VOTE_AVERAGE + " REAL, " +
-                HighestRated.COLUMN_POSTER + " BLOB, " +
-                HighestRated.COLUMN_BACKDROOP + " BLOB, " +
-                " );";
-
-        final String SQL_CREATE_FAVORITE_TABLE = "CREATE TABLE " + Favorite.TABLE_NAME + " (" +
-                Favorite._ID + " INTEGER PRIMARY KEY, " +
-                Favorite.COLUMN_MOVIE_ID + " INTEGER NOT NULL, " +
-                Favorite.COLUMN_TITLE + " TEXT NOT NULL, " +
-                Favorite.COLUMN_OVERVIEW + " TEXT, " +
-                Favorite.COLUMN_VOTE_AVERAGE + " REAL, " +
-                Favorite.COLUMN_POSTER + " BLOB, " +
-                Favorite.COLUMN_BACKDROOP + " BLOB, " +
-                " );";
-
-        sqLiteDatabase.execSQL(SQL_CREATE_MOST_POPULAR_TABLE);
-        sqLiteDatabase.execSQL(SQL_CREATE_HIGHEST_RATED_TABLE);
-        sqLiteDatabase.execSQL(SQL_CREATE_FAVORITE_TABLE);
-
+        sqLiteDatabase.execSQL(SQL_CREATE_MOVIE_TABLE);
     }
 
     @Override
@@ -79,9 +55,7 @@ public class MovieDbHelper extends SQLiteOpenHelper {
         // It does NOT depend on the version number for your application.
         // If you want to update the schema without wiping data, commenting out the next 2 lines
         // should be your top priority before modifying this method.
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + MostPopular.TABLE_NAME);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + HighestRated.TABLE_NAME);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + Favorite.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + MovieTable.TABLE_NAME);
         onCreate(sqLiteDatabase);
     }
 }

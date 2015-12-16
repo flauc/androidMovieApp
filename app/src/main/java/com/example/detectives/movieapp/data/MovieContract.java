@@ -25,23 +25,24 @@ public class MovieContract {
 
     public static final String CONTENT_AUTHORITY = "com.example.detectives.movieapp";
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
-    public static final String PATH_MOST_POPULAR = "most_popular";
-    public static final String PATH_HIGHEST_RATED = "highest_rated";
-    public static final String PATH_FAVORITE = "highest_rated";
+    public static final String PATH_MOVIE_TABLE = "movie_table";
 
-    public static final class MostPopular implements BaseColumns {
+    public static final class MovieTable implements BaseColumns {
 
-        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(PATH_MOST_POPULAR).build();
-        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_MOST_POPULAR;
-        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_MOST_POPULAR;
+        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(PATH_MOVIE_TABLE).build();
+        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_MOVIE_TABLE;
+        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_MOVIE_TABLE;
 
         // Table name
-        public static final String TABLE_NAME = "most_popular";
+        public static final String TABLE_NAME = "movie_table";
 
         // Table columns
 
         // The id returned from the API
         public static final String COLUMN_MOVIE_ID = "movie_id";
+
+        // Helps us identify the movie in further code (is it most_popular, highest_rated or a favorite)
+        public static final String COLUMN_IDENTIFIER = "identifier";
         public static final String COLUMN_TITLE = "title";
         public static final String COLUMN_OVERVIEW = "overview";
 
@@ -54,71 +55,6 @@ public class MovieContract {
 
         // Stored as string
         public static final String COLUMN_RELEASE_DATE = "release_date";
-
-
-        public static Uri buildUri(long id) {
-            return ContentUris.withAppendedId(CONTENT_URI, id);
-        }
-    }
-
-    public static final class HighestRated implements BaseColumns {
-
-        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(PATH_HIGHEST_RATED).build();
-        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_HIGHEST_RATED;
-        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_HIGHEST_RATED;
-
-        // Table name
-        public static final String TABLE_NAME = "most_popular";
-
-        // Table columns
-
-        // The id returned from the API
-        public static final String COLUMN_MOVIE_ID = "movie_id";
-        public static final String COLUMN_TITLE = "title";
-        public static final String COLUMN_OVERVIEW = "overview";
-
-        // Stored as float
-        public static final String COLUMN_VOTE_AVERAGE = "vote_average";
-
-        // Stored as blob
-        public static final String COLUMN_POSTER = "poster";
-        public static final String COLUMN_BACKDROOP = "backdrop";
-
-        // Stored as string
-        public static final String COLUMN_RELEASE_DATE = "release_date";
-
-
-        public static Uri buildUri(long id) {
-            return ContentUris.withAppendedId(CONTENT_URI, id);
-        }
-    }
-
-    public static final class Favorite implements BaseColumns {
-
-        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(PATH_FAVORITE).build();
-        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_FAVORITE;
-        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_FAVORITE;
-
-        // Table name
-        public static final String TABLE_NAME = "most_popular";
-
-        // Table columns
-
-        // The id returned from the API
-        public static final String COLUMN_MOVIE_ID = "movie_id";
-        public static final String COLUMN_TITLE = "title";
-        public static final String COLUMN_OVERVIEW = "overview";
-
-        // Stored as float
-        public static final String COLUMN_VOTE_AVERAGE = "vote_average";
-
-        // Stored as blob
-        public static final String COLUMN_POSTER = "poster";
-        public static final String COLUMN_BACKDROOP = "backdrop";
-
-        // Stored as string
-        public static final String COLUMN_RELEASE_DATE = "release_date";
-
 
         public static Uri buildUri(long id) {
             return ContentUris.withAppendedId(CONTENT_URI, id);
